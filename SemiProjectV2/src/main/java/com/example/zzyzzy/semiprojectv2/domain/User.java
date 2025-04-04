@@ -1,5 +1,6 @@
 package com.example.zzyzzy.semiprojectv2.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,5 +37,11 @@ public class User {
     @CreationTimestamp
     //@Column(insertable = false, updatable = false)
     private LocalDateTime regdate;
+
+    // 리캡챠? controller, RestController @Transient 데이터베이스와 관련 없도록.
+    @Transient  // 엔티티컬럼과 관련 없는 변수 선언
+    @JsonProperty("g-recaptcha-response")
+    private String gRecaptchaResponse;
+
 
 }

@@ -4,6 +4,7 @@ import com.example.zzyzzy.semiprojectv2.domain.Member;
 import com.example.zzyzzy.semiprojectv2.domain.MemberDTO;
 import com.example.zzyzzy.semiprojectv2.domain.User;
 import com.example.zzyzzy.semiprojectv2.jwt.JwtTokenProvider;
+import com.example.zzyzzy.semiprojectv2.service.GoogleRecaptchaService;
 import com.example.zzyzzy.semiprojectv2.service.MemberService;
 import com.example.zzyzzy.semiprojectv2.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,7 @@ public class AuthController {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
+    private final GoogleRecaptchaService googleRecaptchaService;
 
     @PostMapping("/signup")
     public ResponseEntity<?> joinok(@RequestBody User user) {
@@ -37,6 +39,12 @@ public class AuthController {
         log.info("submit된 회원 정보 : {}", user);
 
         try {
+            if (!googleRecaptchaService.verifyRecaptcha(user.getGRecaptchaResponse())) {
+                throw new IllegalStateException("자동가입방지 코드 오류!!");
+            }
+
+
+
             // 정상 처리시 상태코드 200으로 응답
             userService.newUser(user);
             response = ResponseEntity.ok().build();

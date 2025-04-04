@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import "../styles/member.css";
 
 // 폼 재설정 함수 - 외부로 빼냄
@@ -43,6 +43,7 @@ const Join = () => {
     // errors : 상태를 저장하기 위한 변수
     // setErrors : errors 변수의 상태를 변경하는 함수
     const [errors, setErrors] = useState({});
+    const [sitekey, setSitekey] = useState(null);
 
     // 폼 재설정 처리
     const handleReset = () => resetForm(formJoinRef, setErrors);
@@ -54,6 +55,7 @@ const Join = () => {
         // FormData API를 사용해서 폼 데이터 수집
         const formData = new FormData(formJoinRef.current);
         const formValues = Object.fromEntries(formData.entries());
+        console.log(">> join: ", formValues["g-recaptcha-response"]);
 
         // 전체 폼 유효성 검사
         const formErrors = validateJoinForm(formValues);
@@ -106,9 +108,29 @@ const Join = () => {
         } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             formErrors.email = "유효한 이메일 주소를 입력하세요!!";
         }
-        
+
+        // 리캡챠 확인 검사
+        if (!values["g-recaptcha-response"]) {
+            formErrors.recaptcha = "자동가입방지를 확인하세요!!";
+        }
+
+
         return formErrors;
     };
+
+    // recaptcha 모듈 적재
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://www.google.com/recaptcha/api.js';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+
+        const site_key = import.meta.env.VITE_APP_RECAPTCHA_SITE_KEY;
+        setSitekey(site_key);
+
+    }, []);
+
 
     return (
         <main id="content">
@@ -157,8 +179,9 @@ const Join = () => {
                 </div>
 
                 <div className="my-2 d-flex justify-content-center">
-                    <img src="/image/captcha.png"/>
+                    <div className="g-recaptcha" data-sitekey={sitekey}></div>
                 </div>
+                {errors.recaptcha && <div className="alert alert-danger">{errors.recaptcha}</div>}
 
                 <div className="my-2 d-flex justify-content-between">
                     <button type="submit" className="btn btn-primary">
