@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Gallery {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ggno;

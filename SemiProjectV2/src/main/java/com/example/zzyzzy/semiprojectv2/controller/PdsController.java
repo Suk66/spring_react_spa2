@@ -2,18 +2,19 @@ package com.example.zzyzzy.semiprojectv2.controller;
 
 
 import com.example.zzyzzy.semiprojectv2.domain.Pds;
-import com.example.zzyzzy.semiprojectv2.service.GoogleRecaptchaService;
+import com.example.zzyzzy.semiprojectv2.domain.PdsReplyDTO;
+import com.example.zzyzzy.semiprojectv2.service.PdsService;
+import com.example.zzyzzy.semiprojectv2.utils.GoogleRecaptchaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.http.ContentDisposition;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 @Slf4j

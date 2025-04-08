@@ -43,7 +43,6 @@ public class User {
     private String role = "USER";
 
 
-
     // insert, update시 해당 컬럼 제외
     @CreationTimestamp
     //@Column(insertable = false, updatable = false)

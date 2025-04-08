@@ -1,11 +1,8 @@
 package com.example.zzyzzy.semiprojectv2.controller;
 
-import com.example.zzyzzy.semiprojectv2.domain.Member;
-import com.example.zzyzzy.semiprojectv2.domain.MemberDTO;
 import com.example.zzyzzy.semiprojectv2.domain.User;
 import com.example.zzyzzy.semiprojectv2.jwt.JwtTokenProvider;
-import com.example.zzyzzy.semiprojectv2.service.GoogleRecaptchaService;
-import com.example.zzyzzy.semiprojectv2.service.MemberService;
+import com.example.zzyzzy.semiprojectv2.utils.GoogleRecaptchaService;
 import com.example.zzyzzy.semiprojectv2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

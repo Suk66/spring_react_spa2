@@ -2,7 +2,7 @@ package com.example.zzyzzy.semiprojectv2.controller;
 
 import com.example.zzyzzy.semiprojectv2.domain.Gallery;
 import com.example.zzyzzy.semiprojectv2.service.GalleryService;
-import com.example.zzyzzy.semiprojectv2.service.GoogleRecaptchaService;
+import com.example.zzyzzy.semiprojectv2.utils.GoogleRecaptchaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

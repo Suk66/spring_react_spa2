@@ -4,6 +4,7 @@ import com.example.zzyzzy.semiprojectv2.domain.Gallery;
 import com.example.zzyzzy.semiprojectv2.domain.GalleryImage;
 import com.example.zzyzzy.semiprojectv2.repository.GalleryImageRepository;
 import com.example.zzyzzy.semiprojectv2.repository.GalleryRepository;
+import com.example.zzyzzy.semiprojectv2.utils.GalleryUploadService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
