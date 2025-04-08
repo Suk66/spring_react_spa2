@@ -1,43 +1,41 @@
 package com.example.zzyzzy.semiprojectv2.domain;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="gallerys3")
-@Data @Builder
-@AllArgsConstructor
+@Table(name = "pds_replys3")
+@Data
+@Builder
 @NoArgsConstructor
-public class Gallery {
+@AllArgsConstructor
+public class PdsReply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ggno;
+    private Long rno;
 
     @Column(nullable = false)
-    private String title;
+    private String comments;
 
     @Column(nullable = false)
     private String userid;
 
-    @Column(nullable = false)
-    private String simgname;
-
-    @Column
-    private int thumbs = 0;
-
-    @Column
-    private int views = 0;
-
-    @Column(nullable = false)
-    private String contents;
-
     @CreationTimestamp
+    @Column(insertable = false)
     private LocalDateTime regdate;
+
+    @Column(nullable = false)
+    private int ref;
+
+    @Column(nullable = false)
+    private int pno;
 }

@@ -80,6 +80,11 @@ const BoardList = () => {
                                 id="newbdbtn" onClick={goBoardWrite}>
                             <i className="fas fa-pen" /> 글쓰기
                         </button>
+
+                        <button type="button" className="btn btn-primary"
+                                id="newpdsbtn" onClick={goPdsWrite}>
+                            <i className="fas fa-pen" /> 자료실 글쓰기
+                        </button>
                     </td>
                 </tr>
                 <tr className="table-light">

@@ -83,7 +83,7 @@ const Login = () => {
 
         return formErrors;
     }
-    
+
     return (
         <main id="content">
             <h2>로그인</h2>
@@ -91,16 +91,16 @@ const Login = () => {
                   ref={formLoginRef} onSubmit={handleLoginSubmit} noValidate>
                 <div className="form-floating my-2">
                     <input type="text" name="userid" id="userid"
-                       className={`form-control ${errors.userid ? 'is-invalid' : ''}`}
-                       required placeholder="아이디"/>
+                           className={`form-control ${errors.userid ? 'is-invalid' : ''}`}
+                           required placeholder="아이디"/>
                     <label htmlFor="userid" className="form-label">아이디</label>
                     {errors.userid && <div className="invalid-feedback">{errors.userid}</div>}
                 </div>
 
                 <div className="form-floating my-2">
                     <input type="password" name="passwd" id="passwd"
-                       className={`form-control ${errors.passwd ? 'is-invalid' : ''}`}
-                       required placeholder="비밀번호"/>
+                           className={`form-control ${errors.passwd ? 'is-invalid' : ''}`}
+                           required placeholder="비밀번호"/>
                     <label htmlFor="passwd" className="form-label">비밀번호</label>
                     {errors.passwd && <div className="invalid-feedback">{errors.passwd}</div>}
                 </div>
